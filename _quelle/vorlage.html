@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fliesen in Duisburg-Rheinhausen | Yabi’s Fliesenwelt</title>
+<meta name="description" content="Fliesenhandel mit Ausstellung an der Bergheimer Straße 115: Großformate, Naturstein, Mosaik und Terrassenplatten in Originalgröße. Mo–Fr 9–18, Sa 9–15 Uhr.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#E6E4DF">
+<link rel="icon" href="{{favicon}}" type="image/svg+xml">
+<script type="application/ld+json">{{jsonld}}</script>
+<style>
+@font-face { font-family: "Archivo"; src: url({{schrift}}) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+
+:root {
+  --grau: #E6E4DF; --grau-2: #DAD7D0; --papier: #F3F1EC;
+  --anthrazit: #1F2227; --text-2: #4A4D52; --linie: #1F2227;
+  --kupfer: #B4532B; --kupfer-d: #963F1C;
+  --rand: clamp(16px, 3.4vw, 48px);
+  --kopf: 76px;
+  --st: clamp(260px, calc(100svh - 300px), 580px);
+  --sb: clamp(44px, 7.4vw, 128px);
+  --fuge: clamp(6px, 1vw, 14px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--kopf) + 8px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--grau); color: var(--anthrazit); font: 400 19px/1.55 "Archivo", system-ui, sans-serif; font-stretch: 100%; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--kupfer); outline-offset: 3px; }
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; }
+.eng { font-weight: 800; font-stretch: 62%; text-transform: uppercase; line-height: .9; letter-spacing: .004em; }
+.kupfer { color: var(--kupfer); }
+.nw { white-space: nowrap; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.klein { font-size: 15px; color: var(--text-2); }
+.marke { display: flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 700; font-stretch: 75%; letter-spacing: .16em; text-transform: uppercase; }
+.marke::before { content: ""; width: 44px; height: 2px; background: var(--kupfer); }
+.marke span { color: var(--kupfer); }
+.titel { font-size: clamp(40px, 5.2vw, 76px); }
+.hoerer { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; flex: none; }
+
+/* ---------- Kopf ---------- */
+.kopf { position: sticky; top: 0; z-index: 30; height: var(--kopf); display: flex; align-items: center; gap: 40px; padding: 0 var(--rand); background: var(--grau); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.ruf-an .kopf { border-bottom-color: rgba(31,34,39,.18); }
+.kopf__logo { display: block; width: 116px; text-decoration: none; }
+.logo { display: block; width: 100%; height: auto; fill: var(--anthrazit); }
+.kopf__nav { display: flex; gap: 32px; margin-left: auto; }
+.kopf__nav a { display: flex; align-items: center; min-height: 44px; font-size: 18px; font-weight: 600; text-decoration: none; background: linear-gradient(var(--kupfer), var(--kupfer)) 0 calc(100% - 8px) / 0 2px no-repeat; transition: background-size .25s; }
+.kopf__nav a:hover { background-size: 100% 2px; }
+.kopf__tel { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; background: var(--kupfer); color: #fff; font-weight: 700; text-decoration: none; opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .25s, transform .25s; }
+.ruf-an .kopf__tel { opacity: 1; transform: none; pointer-events: auto; }
+.kopf__tel:hover { background: var(--kupfer-d); }
+
+/* ---------- Knöpfe ---------- */
+.knopf { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 58px; padding: 0 26px; font-size: 19px; font-weight: 700; text-decoration: none; border: 2px solid var(--anthrazit); transition: background-color .2s, color .2s; }
+.knopf--kupfer { background: var(--kupfer); border-color: var(--kupfer); color: #fff; font-size: 21px; }
+.knopf--kupfer:hover { background: var(--kupfer-d); border-color: var(--kupfer-d); }
+.knopf--rand:hover { background: var(--anthrazit); color: var(--grau); }
+.status { display: flex; align-items: center; gap: 10px; font-size: 16px; color: var(--text-2); }
+.status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--text-2); flex: none; }
+.status.offen { color: var(--anthrazit); }
+.status.offen::before { background: var(--kupfer); border-color: var(--kupfer); }
+
+/* ---------- Held mit Plattenständer ---------- */
+.held { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: clamp(24px, 4vw, 64px); align-items: end; min-height: calc(100svh - var(--kopf)); max-height: 980px; padding: clamp(16px, 3vh, 40px) var(--rand) clamp(20px, 4vh, 44px); }
+.held__text { display: grid; gap: clamp(14px, 2.4vh, 24px); padding-bottom: 6px; }
+.held__titel { font-size: clamp(46px, min(7.4vw, 10.6vh), 112px); }
+.held__lead { max-width: 34em; font-size: clamp(18px, 1.45vw, 21px); color: var(--text-2); }
+.held__knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.staender { position: relative; }
+.staender__reihe { list-style: none; margin: 0; padding: 44px 0 0; display: flex; align-items: flex-end; justify-content: flex-end; gap: var(--fuge); overflow: hidden; border-bottom: 4px solid var(--anthrazit); }
+.staender__reihe li { flex: none; width: calc(var(--sb) * var(--b, 1)); height: calc(var(--st) * var(--h, 1)); }
+.platte { position: relative; display: block; height: 100%; color: var(--anthrazit); text-decoration: none; transition: transform .5s cubic-bezier(.2, .8, .2, 1), box-shadow .5s; }
+.platte img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.platte::before, .platte::after { content: ""; position: absolute; top: -10px; width: 12px; height: 10px; background: var(--kupfer); }
+.platte::before { left: 16%; }
+.platte::after { right: 16%; }
+.platte__etikett { position: absolute; left: 7px; bottom: 12px; padding: 10px 6px; background: var(--papier); writing-mode: vertical-rl; transform: rotate(180deg); font-size: 13px; font-weight: 700; font-stretch: 70%; letter-spacing: .13em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.staender__reihe li.raus .platte { transform: translateY(-32px); box-shadow: 0 24px 28px -20px rgba(31,34,39,.55); }
+.staender__boden { display: flex; justify-content: space-between; gap: 16px; padding-top: 10px; font-size: 14px; color: var(--text-2); }
+.staender__boden b { font-weight: 700; color: var(--anthrazit); }
+
+/* ---------- Abschnitte ---------- */
+.abschnitt { padding: clamp(72px, 10vw, 140px) var(--rand) 0; }
+.abschnitt__kopf { display: grid; gap: 22px; max-width: 1100px; margin-bottom: clamp(36px, 5vw, 64px); }
+
+/* Sortiment als Liste mit Haarlinien */
+.liste { list-style: none; padding: 0; border-bottom: 1px solid var(--linie); }
+.liste__zeile { position: relative; display: grid; grid-template-columns: 84px minmax(0, 1.05fr) minmax(0, 1.5fr) 210px; gap: 28px; align-items: baseline; padding: 30px 16px 30px 0; border-top: 1px solid var(--linie); transition: background-color .25s; }
+.liste__zeile::before { content: ""; position: absolute; top: -1px; left: 0; width: 12px; height: 10px; background: var(--kupfer); transform: scaleY(0); transform-origin: top; transition: transform .25s; }
+.liste__zeile:hover, .liste__zeile:target { background: var(--grau-2); }
+.liste__zeile:hover::before, .liste__zeile:target::before { transform: none; }
+.liste__nr { padding-left: 24px; font-size: 16px; font-weight: 700; font-stretch: 75%; color: var(--kupfer); }
+.liste__name { font-size: clamp(30px, 3vw, 44px); }
+.liste__satz { max-width: 36em; }
+.liste__wo { font-size: 14px; font-weight: 700; font-stretch: 75%; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); }
+.liste__fuss { margin-top: 18px; }
+
+/* Ausstellung: Bild randabfallend links */
+.ausstellung { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: stretch; padding: clamp(72px, 10vw, 140px) var(--rand) 0 0; }
+.ausstellung__gang { position: relative; min-height: 640px; }
+.ausstellung__gang img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.ausstellung__gang figcaption, .baeder figcaption { font-size: 14px; color: var(--text-2); }
+.ausstellung__gang figcaption { position: absolute; left: var(--rand); bottom: 16px; padding: 8px 12px; background: var(--papier); color: var(--anthrazit); }
+.ausstellung__text { display: grid; gap: 26px; align-content: start; padding: 8px 0 4px; }
+.ausstellung__text > p { max-width: 36em; }
+.fakten { list-style: none; padding: 0; display: grid; gap: 0; max-width: 40em; }
+.fakten li { display: grid; grid-template-columns: 34px 1fr; padding: 14px 0; border-top: 1px solid rgba(31,34,39,.25); }
+.fakten sup, figcaption sup { font-size: 13px; font-weight: 700; color: var(--kupfer); vertical-align: 0; }
+.baeder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--fuge); margin-top: 6px; }
+.baeder img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.baeder figcaption { padding-top: 8px; }
+
+/* Ablauf: drei Platten, versetzt */
+.schritte { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--fuge); align-items: start; }
+.schritt { position: relative; display: grid; gap: 14px; align-content: start; min-height: 360px; padding: 36px clamp(20px, 2.4vw, 36px) 40px; background: var(--papier); }
+.schritt::before, .schritt::after { content: ""; position: absolute; top: -10px; width: 12px; height: 10px; background: var(--kupfer); }
+.schritt::before { left: 16%; }
+.schritt::after { right: 16%; }
+.schritt:nth-child(2) { margin-top: 64px; }
+.schritt:nth-child(3) { margin-top: 128px; }
+.schritt__nr { font-size: clamp(72px, 8vw, 120px); color: var(--kupfer); line-height: .8; }
+.schritt h3 { font-size: clamp(28px, 2.6vw, 38px); }
+.schritt p { color: var(--text-2); }
+
+/* Ladenfront über die ganze Breite */
+.band { position: relative; margin-top: clamp(72px, 10vw, 140px); height: clamp(320px, 42vw, 600px); }
+.band img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.band figcaption { position: absolute; left: var(--rand); bottom: 20px; padding: 10px 14px; background: var(--papier); font-size: 15px; font-weight: 600; }
+
+/* Anfahrt und Kontakt */
+.kontakt { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "kopf kopf" "infos karte" "form form"; column-gap: clamp(28px, 4vw, 64px); }
+.kontakt .abschnitt__kopf { grid-area: kopf; }
+.kontakt__infos { grid-area: infos; display: grid; gap: 22px; align-content: start; }
+.tel-gross { display: inline-flex; align-items: center; gap: 14px; width: fit-content; font-size: clamp(32px, 3.2vw, 46px); font-weight: 800; font-stretch: 70%; text-decoration: none; color: var(--kupfer); }
+.tel-gross:hover { color: var(--kupfer-d); }
+.zeiten { display: grid; grid-template-columns: auto 1fr; gap: 0 24px; }
+.zeiten dt, .zeiten dd { padding: 9px 0; border-top: 1px solid rgba(31,34,39,.25); }
+.zeiten .heute { font-weight: 700; }
+.kontakt__karte { grid-area: karte; }
+.karte { display: block; width: 100%; height: auto; background: var(--grau-2); font-family: "Archivo", system-ui, sans-serif; }
+.k-grund { fill: var(--grau-2); }
+.k-rhein { fill: none; stroke: #C6CBCC; stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; }
+.k-rhein-name { font-size: 11px; font-style: italic; fill: #6E777A; letter-spacing: .2em; }
+.k-bahn { fill: none; stroke: #B5B2AB; stroke-width: 1; stroke-dasharray: 4 3; }
+.k-neben { fill: none; stroke: #C4C1BA; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.k-haupt { fill: none; stroke: #A9A69F; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.k-autobahn-rand { fill: none; stroke: var(--grau-2); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.k-autobahn { fill: none; stroke: var(--anthrazit); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.k-bergheimer { fill: none; stroke: var(--kupfer); stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+.k-strasse { font-size: 10px; font-weight: 700; fill: var(--kupfer); paint-order: stroke; stroke: var(--grau-2); stroke-width: 3px; }
+.k-ort text { font-size: 10.5px; fill: var(--text-2); paint-order: stroke; stroke: var(--grau-2); stroke-width: 3px; stroke-linejoin: round; }
+.k-ort circle { fill: var(--text-2); }
+.k-ort--1 text { font-size: 13px; font-weight: 700; fill: var(--anthrazit); }
+.k-ort--2 text { font-size: 11.5px; font-weight: 600; fill: var(--anthrazit); }
+.k-ausfahrt circle { fill: var(--grau-2); stroke: var(--anthrazit); stroke-width: 1.6; }
+.k-ausfahrt text { font-size: 9.5px; font-weight: 600; fill: var(--anthrazit); paint-order: stroke; stroke: var(--grau-2); stroke-width: 3px; }
+.k-schild rect { fill: var(--anthrazit); }
+.k-schild text { font-size: 9.5px; font-weight: 700; fill: #fff; }
+.k-laden circle { fill: #fff; stroke: var(--kupfer); stroke-width: 3; }
+.kontakt__karte .klein { padding-top: 8px; font-size: 13px; }
+
+.formular { grid-area: form; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px var(--fuge); margin-top: clamp(48px, 6vw, 80px); padding-top: 28px; border-top: 4px solid var(--anthrazit); }
+.formular h3 { grid-column: 1 / -1; font-size: clamp(30px, 3vw, 44px); }
+.formular label { display: grid; gap: 8px; font-size: 16px; font-weight: 700; }
+.formular .breit { grid-column: 1 / -1; }
+.formular input, .formular select, .formular textarea { width: 100%; min-height: 56px; padding: 12px 14px; font: inherit; font-weight: 400; color: var(--anthrazit); background: var(--papier); border: 1px solid rgba(31,34,39,.4); border-radius: 0; }
+.formular textarea { min-height: 140px; resize: vertical; }
+.formular__fuss { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.formular button { cursor: pointer; font-family: inherit; }
+
+/* Fuß */
+.fuss { display: grid; grid-template-columns: 160px 1fr auto; gap: 10px 48px; align-items: start; margin-top: clamp(72px, 10vw, 140px); padding: 40px var(--rand) 48px; background: var(--grau-2); font-size: 16px; }
+.fuss .logo { width: 120px; }
+.fuss__links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.fuss__links a, .fuss summary { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; cursor: pointer; }
+.fuss details { grid-column: 2 / -1; }
+.fuss details p { max-width: 52em; padding: 4px 0 12px; color: var(--text-2); }
+.fuss__entwurf { grid-column: 1 / -1; margin-top: 18px; font-size: 14px; color: var(--text-2); }
+
+.ruf-leiste { display: none; }
+
+/* ---------- Bewegung ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .staender__reihe li { animation: einsetzen .8s cubic-bezier(.2, .85, .25, 1) both; animation-delay: calc(var(--i) * 80ms + 150ms); }
+  @keyframes einsetzen { from { transform: translateY(calc(100% + 12px)); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Tablet und Handy ---------- */
+@media (max-width: 1100px) {
+  .liste__zeile { grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.4fr); }
+  .liste__wo { grid-column: 2 / -1; }
+  .kopf { gap: 24px; }
+  .kopf__nav { gap: 22px; }
+}
+@media (max-width: 860px) {
+  :root { --kopf: 0px; --st: clamp(220px, 44vh, 300px); --sb: calc((100vw - 2 * var(--rand) - 5 * var(--fuge)) / 5.6); }
+  body { font-size: 18px; padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  .kopf { position: relative; height: auto; flex-wrap: wrap; gap: 4px 20px; padding-top: 14px; padding-bottom: 6px; }
+  .kopf__logo { width: 112px; }
+  .kopf__nav { margin-left: 0; width: 100%; justify-content: space-between; gap: 12px; }
+  .kopf__nav a { font-size: 17px; }
+  .kopf__tel { display: none; }
+  .held { grid-template-columns: 1fr; min-height: 0; max-height: none; gap: 36px; padding-top: 18px; }
+  .held__knoepfe .knopf { width: 100%; }
+  .staender__reihe { justify-content: space-between; padding-top: 40px; }
+  .platte__etikett { left: 5px; bottom: 8px; padding: 8px 4px; font-size: 11px; letter-spacing: .1em; }
+  .staender__reihe li.raus .platte { transform: translateY(-26px); }
+  .liste__zeile { grid-template-columns: 44px minmax(0, 1fr); gap: 8px 14px; padding: 22px 8px 22px 0; }
+  .liste__nr { padding-left: 16px; }
+  .liste__satz, .liste__wo { grid-column: 2; }
+  .ausstellung { grid-template-columns: 1fr; padding-right: 0; }
+  .ausstellung__gang { min-height: 0; aspect-ratio: 4 / 5; max-height: 520px; margin-right: var(--rand); }
+  .ausstellung__text { padding: 0 var(--rand); }
+  .baeder { gap: 8px; }
+  .baeder figcaption { font-size: 13px; }
+  .schritte { grid-template-columns: 1fr; gap: 26px; }
+  .schritt, .schritt:nth-child(2), .schritt:nth-child(3) { margin-top: 0; min-height: 0; }
+  .schritt:nth-child(2) { margin-left: 8%; }
+  .schritt:nth-child(3) { margin-left: 16%; }
+  .kontakt { grid-template-columns: 1fr; grid-template-areas: "kopf" "infos" "karte" "form"; }
+  .kontakt__karte { margin-top: 36px; overflow: hidden; }
+  .kontakt__karte .karte { width: 170%; max-width: none; margin-left: -38%; }
+  .formular { grid-template-columns: 1fr; }
+  .fuss { grid-template-columns: 1fr; }
+  .fuss details { grid-column: 1; }
+  .ruf-leiste { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 60px; padding: 8px 16px calc(8px + env(safe-area-inset-bottom)); background: var(--kupfer); color: #fff; font-size: 20px; font-weight: 700; text-decoration: none; transform: translateY(110%); transition: transform .3s; }
+  .ruf-an .ruf-leiste { transform: none; }
+}
+</style>
+</head>
+<body>
+<a class="sr" href="#sortiment">Zum Sortiment springen</a>
+<header class="kopf">
+  <a class="kopf__logo" href="#start" aria-label="Yabi’s Fliesenwelt, zum Seitenanfang">{{logo}}</a>
+  <nav class="kopf__nav" aria-label="Hauptmenü">
+    <a href="#sortiment">Sortiment</a>
+    <a href="#ausstellung">Ausstellung</a>
+    <a href="#anfahrt">Anfahrt</a>
+  </nav>
+  <a class="kopf__tel" href="tel:+4915146353821" tabindex="-1" aria-hidden="true">{{hoerer}}01514 6353821</a>
+</header>
+
+<main id="start">
+  <section class="held" aria-labelledby="held-titel">
+    <div class="held__text">
+      <p class="marke">Fliesenhandel mit Ausstellung</p>
+      <h1 id="held-titel" class="eng held__titel">Fliesen in Duisburg-Rheinhausen. <span class="kupfer">Ziehen Sie <span class="nw">eine raus.</span></span></h1>
+      <p class="held__lead">Großformate, Naturstein, Mosaik und Terrassenplatten stehen bei uns in voller Größe im Ständer – zum Herausziehen, Anfassen und Nebeneinanderstellen.</p>
+      <div class="held__knoepfe">
+        <a class="knopf knopf--kupfer" id="held-tel" href="tel:+4915146353821">{{hoerer}}01514 6353821</a>
+        <a class="knopf knopf--rand" href="#anfahrt">Anfahrt und Zeiten</a>
+      </div>
+      <p class="status" data-status>Mo–Fr 9–18 · Sa 9–15 Uhr</p>
+    </div>
+
+    <div class="staender">
+      <ul class="staender__reihe" aria-label="Platten aus der Ausstellung">
+        <li style="--i:0;--h:1;--b:1"><a class="platte" href="#sortiment-01"><img src="{{bild:platte-marmor.webp}}" width="240" height="720" alt="Platte in Marmoroptik, hell mit feinen Adern"><span class="platte__etikett">Marmoroptik</span></a></li>
+        <li class="raus" style="--i:1;--h:.96;--b:1"><a class="platte" href="#sortiment-01"><img src="{{bild:platte-stein.webp}}" width="240" height="620" alt="Platte in Steinoptik, grau mit dunklen Adern"><span class="platte__etikett">Steinoptik</span></a></li>
+        <li style="--i:2;--h:.9;--b:.92"><a class="platte" href="#sortiment-02"><img src="{{bild:platte-beton.webp}}" width="140" height="700" alt="Platte in Betonoptik, dunkelgrau"><span class="platte__etikett">Betonoptik</span></a></li>
+        <li style="--i:3;--h:.64;--b:1"><a class="platte" href="#sortiment-04"><img src="{{bild:platte-mosaik.webp}}" width="200" height="400" alt="Schwarzes Mosaik im Fischgrätmuster in der Musterdusche"><span class="platte__etikett">Mosaik</span></a></li>
+        <li style="--i:4;--h:.68;--b:1"><a class="platte" href="#sortiment-05"><img src="{{bild:platte-terrasse.webp}}" width="170" height="410" alt="Terrassenplatte in Steinoptik vor dem Laden"><span class="platte__etikett">Terrasse</span></a></li>
+        <li style="--i:5;--h:1;--b:.64"><a class="platte" href="#sortiment-06"><img src="{{bild:platte-zubehoer.webp}}" width="240" height="1000" alt="Fliesenprofile aus Metall im Zubehörregal"><span class="platte__etikett">Zubehör</span></a></li>
+      </ul>
+      <p class="staender__boden"><span>Alle Platten fotografiert in der Ausstellung</span><b>Bergheimer Straße 115</b></p>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="sortiment" aria-labelledby="sortiment-titel">
+    <div class="abschnitt__kopf">
+      <p class="marke"><span>01</span> Sortiment</p>
+      <h2 id="sortiment-titel" class="eng titel">Was bei uns im Ständer steht. <span class="kupfer">Und wofür es taugt.</span></h2>
+    </div>
+    <ol class="liste">
+      <li class="liste__zeile" id="sortiment-01"><span class="liste__nr">01</span><h3 class="eng liste__name">Marmor- und Steinoptik</h3><p class="liste__satz">Feinsteinzeug mit Marmor- oder Steinbild, oft in großen Formaten – und echter Naturstein, wenn es das Original sein soll.</p><p class="liste__wo">Bad · Wohnraum · Küche</p></li>
+      <li class="liste__zeile" id="sortiment-02"><span class="liste__nr">02</span><h3 class="eng liste__name">Betonoptik</h3><p class="liste__satz">Ruhige graue Flächen ohne Muster. In unseren Musterbädern sehen Sie, wie das an der Wand wirkt.</p><p class="liste__wo">Bad · Wohnraum</p></li>
+      <li class="liste__zeile" id="sortiment-03"><span class="liste__nr">03</span><h3 class="eng liste__name">Holzoptik</h3><p class="liste__satz">Sieht aus wie Dielen, verträgt aber Wasser und Fußbodenheizung.</p><p class="liste__wo">Wohnraum · Küche · Bad</p></li>
+      <li class="liste__zeile" id="sortiment-04"><span class="liste__nr">04</span><h3 class="eng liste__name">Mosaik</h3><p class="liste__satz">Für Duschwände, Nischen und Akzente. In unserer Musterdusche liegt es im Fischgrät.</p><p class="liste__wo">Dusche · Akzente</p></li>
+      <li class="liste__zeile" id="sortiment-05"><span class="liste__nr">05</span><h3 class="eng liste__name">Terrassenplatten</h3><p class="liste__satz">Für Terrasse und Balkon, auch auf Stelzlagern verlegt. Vor dem Laden liegen sie auf dem Rasen zum Ansehen.</p><p class="liste__wo">Außenbereich</p></li>
+      <li class="liste__zeile" id="sortiment-06"><span class="liste__nr">06</span><h3 class="eng liste__name">Abdichtung und Zubehör</h3><p class="liste__satz">Profile, Dichtband und Abdichtung gibt es im selben Einkauf wie die Fliese.</p><p class="liste__wo">Bad · Außenbereich</p></li>
+    </ol>
+    <p class="liste__fuss klein">Formate, Farben und Preise zeigen wir Ihnen im Laden – das Sortiment wechselt laufend.</p>
+  </section>
+
+  <section class="ausstellung" id="ausstellung" aria-labelledby="ausstellung-titel">
+    <figure class="ausstellung__gang">
+      <img src="{{bild:grossformate-800.webp}}" width="800" height="1000" alt="Gang in der Ausstellung mit einer langen Reihe stehender Großformat-Platten in Marmoroptik">
+      <figcaption><sup>1</sup> Der Gang mit den Großformaten</figcaption>
+    </figure>
+    <div class="ausstellung__text">
+      <p class="marke"><span>02</span> Ausstellung</p>
+      <h2 id="ausstellung-titel" class="eng titel">Hier steht alles in echt. <span class="kupfer">Manches schon verlegt.</span></h2>
+      <p>Eine Fliese sieht am Bildschirm anders aus als an der Wand. Deshalb steht bei uns alles in Originalgröße, und in den Musterbädern sehen Sie, wie eine Fläche fertig verlegt wirkt.</p>
+      <ol class="fakten">
+        <li><sup>1</sup><span>Großformate hängen im Kupferregal und stehen im Gang – Platte für Platte zum Ansehen.</span></li>
+        <li><sup>2</sup><span>Musterbäder mit Dusche, Waschtisch und Armaturen, fertig verlegt.</span></li>
+        <li><sup>3</sup><span>Draußen vor dem Laden stehen Platten zum Ansehen, Terrassenplatten liegen auf dem Rasen und auf Stelzlagern.</span></li>
+      </ol>
+      <div class="baeder">
+        <figure><img src="{{bild:bad-beton-640.webp}}" width="640" height="560" alt="Musterbad mit Wänden in Betonoptik und Waschtisch"><figcaption><sup>2</sup> Betonoptik</figcaption></figure>
+        <figure><img src="{{bild:bad-marmor-520.webp}}" width="520" height="516" alt="Musterbad mit dunklen Wandplatten in Marmoroptik"><figcaption><sup>2</sup> Marmoroptik</figcaption></figure>
+        <figure><img src="{{bild:fischgraet-520.webp}}" width="520" height="532" alt="Musterdusche mit schwarzem Fischgrät-Mosaik und Armatur in Messing"><figcaption><sup>2</sup> Fischgrät-Dusche</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt" id="ablauf" aria-labelledby="ablauf-titel">
+    <div class="abschnitt__kopf">
+      <p class="marke"><span>03</span> So läuft es</p>
+      <h2 id="ablauf-titel" class="eng titel">Von der Auswahl <span class="kupfer">bis zur Verlegung.</span></h2>
+      <p class="klein">So steht es auch auf unserem Schild über dem Schaufenster.</p>
+    </div>
+    <ol class="schritte">
+      <li class="schritt"><span class="eng schritt__nr" aria-hidden="true">01</span><h3 class="eng">Beratung</h3><p>Kommen Sie mit den Maßen oder einem Foto vom Raum. Wir zeigen Ihnen passende Platten in voller Größe.</p></li>
+      <li class="schritt"><span class="eng schritt__nr" aria-hidden="true">02</span><h3 class="eng">Verkauf</h3><p>Fliesen, Abdichtung und Zubehör bekommen Sie bei uns in einem Einkauf.</p></li>
+      <li class="schritt"><span class="eng schritt__nr" aria-hidden="true">03</span><h3 class="eng">Verlegung durch Vermittlung</h3><p>Sie verlegen nicht selbst? Dann vermitteln wir Ihnen einen Fliesenleger.</p></li>
+    </ol>
+  </section>
+
+  <figure class="band">
+    <img src="{{bild:fassade-1600.webp}}" width="1600" height="1066" alt="Ladenfront von Yabi’s Fliesenwelt mit Schild, Schaufenster und Eingang" loading="lazy">
+    <figcaption><sup>3</sup> Bergheimer Straße 115 – vor dem Schaufenster stehen Platten zum Ansehen</figcaption>
+  </figure>
+
+  <section class="abschnitt kontakt" id="anfahrt" aria-labelledby="anfahrt-titel">
+    <div class="abschnitt__kopf">
+      <p class="marke"><span>04</span> Anfahrt und Kontakt</p>
+      <h2 id="anfahrt-titel" class="eng titel">Bergheimer Straße 115. <span class="kupfer">Kommen Sie vorbei.</span></h2>
+    </div>
+    <div class="kontakt__infos">
+      <a class="tel-gross" href="tel:+4915146353821">{{hoerer}}01514 6353821</a>
+      <p class="status" data-status>Mo–Fr 9–18 · Sa 9–15 Uhr</p>
+      <dl class="zeiten">
+        <dt data-tage="1 2 3 4 5">Montag bis Freitag</dt><dd data-tage="1 2 3 4 5">9–18 Uhr</dd>
+        <dt data-tage="6">Samstag</dt><dd data-tage="6">9–15 Uhr</dd>
+        <dt data-tage="0">Sonntag</dt><dd data-tage="0">geschlossen</dd>
+      </dl>
+      <p>Yabi’s Fliesenwelt<br>Bergheimer Straße 115<br>47228 Duisburg-Rheinhausen</p>
+      <p><a class="knopf knopf--rand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergheimer+Stra%C3%9Fe+115%2C+47228+Duisburg" rel="noopener">Route planen</a></p>
+      <p><a href="mailto:info@yabisfliesenwelt.de">info@yabisfliesenwelt.de</a></p>
+    </div>
+    <div class="kontakt__karte">
+      {{karte}}
+      <p class="klein">{{karte-nachweis}}</p>
+    </div>
+    <form class="formular" id="formular" action="mailto:info@yabisfliesenwelt.de" method="post" enctype="text/plain">
+      <h3 class="eng">Lieber schreiben?</h3>
+      <label>Ihr Name<input name="name" autocomplete="name" required></label>
+      <label>Telefon oder E-Mail<input name="kontakt" autocomplete="email" required></label>
+      <label>Worum geht es?
+        <select name="thema"><option>Bad</option><option>Küche</option><option>Wohnraum</option><option>Terrasse und Balkon</option><option>Abdichtung und Zubehör</option><option>Etwas anderes</option></select>
+      </label>
+      <label class="breit">Ihre Nachricht<textarea name="nachricht" placeholder="Zum Beispiel: Bad mit 8 m² Boden, Wand bis 2 m hoch, gern Großformat in Betonoptik."></textarea></label>
+      <div class="formular__fuss">
+        <button class="knopf knopf--kupfer" type="submit">Anfrage senden</button>
+        <p class="klein">Das Formular öffnet Ihr E-Mail-Programm. Auf dieser Seite wird nichts gespeichert.</p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div>{{logo-klein}}</div>
+  <div>
+    <p>Yabis Fliesenwelt GmbH<br>Bergheimer Straße 115, 47228 Duisburg</p>
+  </div>
+  <div class="fuss__links">
+    <a href="https://www.instagram.com/yabis.fliesenwelt/" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@yabis.fliesenwelt" rel="noopener">TikTok</a>
+  </div>
+  <details id="impressum">
+    <summary>Impressum</summary>
+    <p>Yabis Fliesenwelt GmbH, Bergheimer Straße 115, 47228 Duisburg. Vertreten durch den Geschäftsführer Joel Amerkamp. Registergericht: Amtsgericht Duisburg, HRB 41027. Telefon 01514 6353821, E-Mail info@yabisfliesenwelt.de.</p>
+  </details>
+  <details id="datenschutz">
+    <summary>Datenschutz</summary>
+    <p>Diese Seite setzt keine Cookies, bindet keine Analyse- oder Werbedienste ein und lädt nichts von fremden Servern: Schrift, Bilder und Karte stecken in der Seite selbst. Die Anfahrtskarte ist eine eigene Zeichnung auf Grundlage von OpenStreetMap-Daten. Das Formular öffnet nur Ihr E-Mail-Programm. Verantwortlich: Yabis Fliesenwelt GmbH, Anschrift siehe Impressum.</p>
+  </details>
+  <p class="fuss__entwurf">Entwurf von SideTwo – noch nicht veröffentlicht.</p>
+</footer>
+
+<a class="ruf-leiste" href="tel:+4915146353821" tabindex="-1" aria-hidden="true">{{hoerer}}01514 6353821 anrufen</a>
+
+<script>
+(() => {
+  // Öffnungsstatus nach deutscher Zeit
+  const zeiten = { 1: [9, 18], 2: [9, 18], 3: [9, 18], 4: [9, 18], 5: [9, 18], 6: [9, 15] };
+  const tage = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+  const teile = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date()).map((p) => [p.type, p.value]));
+  const tag = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(teile.weekday);
+  const jetzt = +teile.hour + teile.minute / 60;
+  const heute = zeiten[tag];
+  let text, offen = false;
+  if (heute && jetzt >= heute[0] && jetzt < heute[1]) { text = `Jetzt geöffnet, heute bis ${heute[1]} Uhr`; offen = true; }
+  else if (heute && jetzt < heute[0]) text = `Heute ab ${heute[0]} Uhr geöffnet`;
+  else {
+    let n = (tag + 1) % 7; while (!zeiten[n]) n = (n + 1) % 7;
+    text = `Geschlossen – ${n === (tag + 1) % 7 ? "morgen" : "am " + tage[n]} ab ${zeiten[n][0]} Uhr wieder geöffnet`;
+  }
+  document.querySelectorAll("[data-status]").forEach((el) => { el.textContent = text; el.classList.toggle("offen", offen); });
+  document.querySelectorAll("[data-tage]").forEach((el) => { if (el.dataset.tage.split(" ").includes(String(tag))) el.classList.add("heute"); });
+
+  // Telefon im Kopf bzw. Leiste am Handy erst, wenn der Knopf im Held nicht mehr zu sehen ist
+  const kopfTel = document.querySelector(".kopf__tel"), leiste = document.querySelector(".ruf-leiste");
+  new IntersectionObserver(([e]) => {
+    const an = !e.isIntersecting;
+    document.body.classList.toggle("ruf-an", an);
+    for (const el of [kopfTel, leiste]) { el.tabIndex = an ? 0 : -1; el.setAttribute("aria-hidden", String(!an)); }
+  }).observe(document.getElementById("held-tel"));
+
+  // Ständer: die Platte unter dem Zeiger wird herausgezogen
+  const platten = [...document.querySelectorAll(".staender__reihe li")];
+  const ziehen = (li) => platten.forEach((p) => p.classList.toggle("raus", p === li));
+  platten.forEach((li) => {
+    li.addEventListener("pointerenter", () => ziehen(li));
+    li.addEventListener("focusin", () => ziehen(li));
+  });
+
+  // Formular: Nachricht als E-Mail vorbereiten
+  document.getElementById("formular").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const d = new FormData(ev.target);
+    const text = `Name: ${d.get("name")}\nKontakt: ${d.get("kontakt")}\nThema: ${d.get("thema")}\n\n${d.get("nachricht")}`;
+    location.href = `mailto:info@yabisfliesenwelt.de?subject=${encodeURIComponent("Anfrage: " + d.get("thema"))}&body=${encodeURIComponent(text)}`;
+  });
+})();
+</script>
+</body>
+</html>
