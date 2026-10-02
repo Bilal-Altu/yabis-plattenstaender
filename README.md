@@ -8,15 +8,21 @@ Vorschau: https://bilal-altu.github.io/yabis-plattenstaender/ (noindex, robots.t
 
 ## Idee
 
-Im Laden stehen die Großformate hochkant im Kupferregal, man zieht eine Platte heraus, um sie ganz zu sehen.
-Die Startseite zeigt einen Ständer aus echten Plattenausschnitten (Ladenfotos), jede mit Kupferklammer und
-Etikett; die Platte unter dem Zeiger fährt heraus. Farben: Ausstellungsgrau `#E6E4DF`, Anthrazit `#1F2227`,
-Kupfer `#B4532B` (das Plattenregal). Schrift: Archivo, Extra-Condensed für Überschriften und Etiketten.
+Im Laden hängen die Großformate im Kupferregal, man zieht eine Platte heraus, um sie ganz zu sehen.
+- **Held:** ein gezeichnetes Kupferregal mit sechs echten Plattenausschnitten (Ladenfotos). Das Regal blättert
+  von selbst weiter, die Platte unter dem Zeiger fährt heraus, das Musteretikett darunter liest mit
+  (Optik, Material, Einsatz, Ort im Laden).
+- **Musterwand:** sechs eigene Verlegebilder (SVG), gefüllt mit Ausschnitten der echten Platten – Marmorwand im
+  Halbverband, Bad in Betonoptik, Dielen, Fischgrät-Nische, Stelzlager im Schnitt, Eckdetail mit Dichtband.
+  Die Fliesen werden beim Hereinscrollen „gelegt“.
+- **Ablauf:** dieselbe Wand in drei Zuständen (Aufmaß → Abdichtung und erste Reihe → fertig verlegt).
+- Farben: Grund `#ECEAE5`, Tinte `#1E2125`, Kupfer `#B4532B` (das Plattenregal). Schrift: Archivo, breit
+  und eng gesetzt, zweifarbige Überschriften.
 
 ## Bauen
 
 ```bash
-bash _quelle/bilder.sh      # Plattenstreifen aus Desktop/Yabis/quelle schneiden
+bash _quelle/bilder.sh      # Plattenstreifen und Texturen aus Desktop/Yabis/quelle schneiden
 node _quelle/bauen.mjs      # index.html aus _quelle/vorlage.html
 ```
 

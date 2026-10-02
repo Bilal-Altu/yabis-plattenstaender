@@ -6,6 +6,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { karte, KARTE_NACHWEIS } from "../../yabis/_quelle/karte.mjs";
 import { Y_STUECKE, SCHEMA_BETRIEB } from "../../yabis/_quelle/helfer.mjs";
+import * as VB from "./verlegebilder.mjs";
 
 const HIER = dirname(fileURLToPath(import.meta.url));
 const ZIEL = join(HIER, "..");
@@ -26,10 +27,12 @@ const bilder = new Set();
 // Ersetzungen immer per Funktion, damit „$“ in base64 oder SVG nichts auslöst
 html = html
   .replace(/\{\{bild:([\w.-]+)\}\}/g, (_, name) => { bilder.add(name); return datenUri(join(HIER, "bilder", name), "image/webp"); })
+  .replace(/\{\{defs\}\}/g, () => VB.defs((name) => { bilder.add(name); return datenUri(join(HIER, "bilder", name), "image/webp"); }))
+  .replace(/\{\{vb:(\w+)\}\}/g, (_, name) => { if (!VB[name]) throw new Error("Verlegebild fehlt: " + name); return VB[name](); })
   .replace(/\{\{schrift\}\}/g, () => datenUri(join(HIER, "schrift", "archivo-latin-wdth-wght.woff2"), "font/woff2"))
   .replace(/\{\{favicon\}\}/g, () => datenUri(join(HIER, "favicon.svg"), "image/svg+xml"))
-  .replace(/\{\{logo\}\}/g, () => logo("#E6E4DF"))
-  .replace(/\{\{logo-klein\}\}/g, () => logo("#DAD7D0"))
+  .replace(/\{\{logo\}\}/g, () => logo("#ECEAE5"))
+  .replace(/\{\{logo-klein\}\}/g, () => logo("#E1DED7"))
   .replace(/\{\{hoerer\}\}/g, () => HOERER)
   .replace(/\{\{karte\}\}/g, () => karte())
   .replace(/\{\{karte-nachweis\}\}/g, () => KARTE_NACHWEIS)

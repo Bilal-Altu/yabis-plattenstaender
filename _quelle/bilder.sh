@@ -25,3 +25,12 @@ streifen platte-mosaik   WhatsApp-Image-2026-08-17-at-09.40.23-1.jpeg    "crop=2
 streifen platte-terrasse 1000157989-scaled.jpg                            "crop=170:410:230:1540,$HANDY"
 # Zubehör: Profile im Regal „Abdichtung & Zubehör“
 streifen platte-zubehoer WhatsApp-Image-2026-08-18-at-14.14.27-2-1.jpeg  "crop=240:1000:100:420,$WA"
+
+# Texturen für die Verlegebilder (größere Flächen, werden in SVG-Mustern gezeigt)
+textur() { # name vorlage crop zielbreite
+  "$FF" -v error -y -i "$Q/$2" -vf "crop=$3,$WA,unsharp=5:5:0.5:5:5:0,scale=$4:-2:flags=lanczos" -c:v libwebp -quality 80 "$Z/$1.webp"
+  echo "$1: $("$FF" -hide_banner -i "$Z/$1.webp" 2>&1 | grep -oE '[0-9]{2,4}x[0-9]{2,4}' | head -1)"
+}
+textur tex-marmor   WhatsApp-Image-2026-08-14-at-12.25.24-2-1.jpeg  600:440:540:200   600
+textur tex-stein    WhatsApp-Image-2026-08-14-at-12.25.25-5.jpeg    600:460:250:260   600
+textur tex-terrasse 1000157989-scaled.jpg                            400:330:110:1560  400
