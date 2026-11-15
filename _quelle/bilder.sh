@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Plattenbilder für den Ständer: senkrechte Streifen aus den eigenen Ladenfotos (Desktop/Yabis/quelle).
+# Plattenbilder für den Ständer: senkrechte Streifen aus den eigenen Ladenfotos (Desktop/sideTwo Projekte/Website Kunden/yabis-fliesenwelt/_material/quelle).
 #   bash _quelle/bilder.sh
 # Reihenfolge: beschneiden -> entrauschen -> abstimmen -> schärfen. Kein Hochrechnen.
 set -euo pipefail
 FF="/c/Users/bilal/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-9.0.1-full_build/bin/ffmpeg.exe"
-Q="C:/Users/bilal/Desktop/Yabis/quelle"
+Q="C:/Users/bilal/Desktop/sideTwo Projekte/Website Kunden/yabis-fliesenwelt/_material/quelle"
 Z="$(cd "$(dirname "$0")" && pwd)/bilder"
 mkdir -p "$Z"
 WA="hqdn3d=2:1.5:3:3,eq=contrast=1.05:saturation=0.95"

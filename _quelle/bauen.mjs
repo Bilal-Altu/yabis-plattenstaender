@@ -1,11 +1,11 @@
 // Baut index.html als eine Datei: Schrift, Bilder, Logo, Karte und Favicon werden eingebettet.
 //   node _quelle/bauen.mjs
-// Die Karte kommt aus dem Nachbar-Repo ../yabis (karte.mjs + karte-daten.json aus OpenStreetMap).
+// Die Karte kommt aus dem Nachbar-Repo ../yabis-fliesenwelt (karte.mjs + karte-daten.json aus OpenStreetMap).
 import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { karte, KARTE_NACHWEIS } from "../../yabis/_quelle/karte.mjs";
-import { Y_STUECKE, SCHEMA_BETRIEB } from "../../yabis/_quelle/helfer.mjs";
+import { karte, KARTE_NACHWEIS } from "../../yabis-fliesenwelt/_quelle/karte.mjs";
+import { Y_STUECKE, SCHEMA_BETRIEB } from "../../yabis-fliesenwelt/_quelle/helfer.mjs";
 import * as VB from "./verlegebilder.mjs";
 
 const HIER = dirname(fileURLToPath(import.meta.url));

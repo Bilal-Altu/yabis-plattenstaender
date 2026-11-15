@@ -22,7 +22,7 @@ Im Laden hängen die Großformate im Kupferregal, man zieht eine Platte heraus, 
 ## Bauen
 
 ```bash
-bash _quelle/bilder.sh      # Plattenstreifen und Texturen aus Desktop/Yabis/quelle schneiden
+bash _quelle/bilder.sh      # Plattenstreifen und Texturen aus Desktop/sideTwo Projekte/Website Kunden/yabis-fliesenwelt/_material/quelle schneiden
 node _quelle/bauen.mjs      # index.html aus _quelle/vorlage.html
 ```
 
