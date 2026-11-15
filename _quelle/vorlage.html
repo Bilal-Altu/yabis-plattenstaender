@@ -469,7 +469,8 @@ sup { font-size: 12px; font-weight: 700; color: var(--kupfer); vertical-align: 0
       {{karte}}
       <p class="klein">{{karte-nachweis}}</p>
     </div>
-    <form class="formular" id="formular" action="mailto:info@yabisfliesenwelt.de" method="post" enctype="text/plain">
+    <form class="formular" id="formular" action="kontakt.php" method="post">
+<div class="st-falle" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Bitte leer lassen <input name="webseite" type="text" tabindex="-1" autocomplete="off"></label></div>
       <h3>Lieber schreiben?</h3>
       <label>Ihr Name<input name="name" autocomplete="name" required></label>
       <label>Telefon oder E-Mail<input name="kontakt" autocomplete="email" required></label>
@@ -479,7 +480,7 @@ sup { font-size: 12px; font-weight: 700; color: var(--kupfer); vertical-align: 0
       <label class="breit">Ihre Nachricht<textarea name="nachricht" placeholder="Zum Beispiel: Bad mit 8 m² Boden, Wand bis 2 m hoch, gern Großformat in Betonoptik."></textarea></label>
       <div class="formular__fuss">
         <button class="knopf knopf--kupfer" type="submit"><span class="knopf__kachel" aria-hidden="true">→</span>Anfrage senden</button>
-        <p class="klein">Das Formular öffnet Ihr E-Mail-Programm. Auf dieser Seite wird nichts gespeichert.</p>
+        <p class="klein">Ihre Anfrage geht direkt per E-Mail an uns – auf der Seite wird nichts gespeichert.</p>
       </div>
     </form>
   </section>
@@ -498,7 +499,7 @@ sup { font-size: 12px; font-weight: 700; color: var(--kupfer); vertical-align: 0
   </details>
   <details id="datenschutz">
     <summary>Datenschutz</summary>
-    <p>Diese Seite setzt keine Cookies, bindet keine Analyse- oder Werbedienste ein und lädt nichts von fremden Servern: Schrift, Bilder und Karte stecken in der Seite selbst. Die Anfahrtskarte ist eine eigene Zeichnung auf Grundlage von OpenStreetMap-Daten. Das Formular öffnet nur Ihr E-Mail-Programm. Verantwortlich: Yabis Fliesenwelt GmbH, Anschrift siehe Impressum.</p>
+    <p>Diese Seite setzt keine Cookies, bindet keine Analyse- oder Werbedienste ein und lädt nichts von fremden Servern: Schrift, Bilder und Karte stecken in der Seite selbst. Die Anfahrtskarte ist eine eigene Zeichnung auf Grundlage von OpenStreetMap-Daten. Das Formular schickt Ihre Angaben an den Webserver, der sie per E-Mail an uns weiterleitet; ein Hashwert Ihrer IP-Adresse wird zum Schutz vor Missbrauch höchstens eine Stunde gespeichert. Verantwortlich: Yabis Fliesenwelt GmbH, Anschrift siehe Impressum.</p>
   </details>
   <p class="fuss__entwurf">Entwurf von SideTwo – noch nicht veröffentlicht.</p>
 </footer>
@@ -564,6 +565,48 @@ sup { font-size: 12px; font-weight: 700; color: var(--kupfer); vertical-align: 0
     const d = new FormData(ev.target);
     const text = `Name: ${d.get("name")}\nKontakt: ${d.get("kontakt")}\nThema: ${d.get("thema")}\n\n${d.get("nachricht")}`;
     location.href = `mailto:info@yabisfliesenwelt.de?subject=${encodeURIComponent("Anfrage: " + d.get("thema"))}&body=${encodeURIComponent(text)}`;
+  });
+})();
+</script>
+<script>
+(function () {
+  /* Versand an kontakt.php – SideTwo-Kontaktformular-Standard (nie über die Mail-App) */
+  function stSenden(form, betreff, melden) {
+    var daten = new FormData(form);
+    if (betreff) daten.set("betreff", betreff);
+    var knopf = form.querySelector('[type="submit"]');
+    if (knopf) knopf.disabled = true;
+    if (!melden) {
+      var st = form.querySelector(".st-status");
+      if (!st) {
+        st = document.createElement("p");
+        st.className = "st-status";
+        st.setAttribute("role", "status");
+        st.setAttribute("aria-live", "polite");
+        st.style.marginTop = "12px";
+        st.style.fontWeight = "600";
+        form.appendChild(st);
+      }
+      melden = function (ok, text) { st.textContent = text; };
+    }
+    return fetch(form.getAttribute("action") || "kontakt.php", {
+      method: "POST", body: daten, headers: { "X-Requested-With": "fetch" }, credentials: "same-origin"
+    })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return { ok: false, text: "Das Formular konnte gerade nicht gesendet werden. Bitte rufen Sie uns kurz an." }; })
+      .then(function (a) {
+        if (knopf) knopf.disabled = !!a.ok;
+        melden(!!a.ok, a.text);
+        if (a.ok) form.reset();
+        return a;
+      });
+  }
+
+  var form = document.getElementById("formular");
+  if (form) form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    stSenden(form, "Anfrage Plattenständer");
   });
 })();
 </script>
